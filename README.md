@@ -41,13 +41,6 @@ This project is a **web-based tool** that helps users estimate their maximum eli
 
 ---
 
-## 💻 Demo
-
-> Live demo available on GitHub Pages (optional if deployed):
-> [YourGitHubUsername.github.io/Loan-EMI-Optimizer](#)
-
----
-
 ## 🛠️ Technologies Used
 
 * **HTML5** — Structure

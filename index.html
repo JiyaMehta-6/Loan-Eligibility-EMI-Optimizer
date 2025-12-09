@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loan Eligibility & EMI Optimizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <div>
+        <h1>Loan Eligibility & EMI Optimizer</h1>
+        <p class="muted">Interactive tool to estimate your maximum eligible loan, compare EMI options and visualize amortization.</p>
+      </div>
+      <div class="brand">EMI<span>Opt</span></div>
+    </header>
+
+    <section class="grid">
+      <form id="loan-form" class="card inputs">
+        <h2>Applicant details</h2>
+
+        <div class="row">
+          <label>Monthly Gross Income (₹)
+            <input id="income" type="number" min="0" step="1000" value="50000">
+          </label>
+          <label>Existing Monthly Obligations (EMIs/Loans) (₹)
+            <input id="existing" type="number" min="0" step="100" value="8000">
+          </label>
+        </div>
+
+        <div class="row">
+          <label>Credit Score
+            <input id="credit" type="number" min="300" max="900" step="1" value="720">
+          </label>
+          <label>Preferred Loan Amount (optional) (₹)
+            <input id="requested" type="number" min="0" step="1000" placeholder="Leave blank to compute max">
+          </label>
+        </div>
+
+        <h3>Interest & Tenure</h3>
+        <div class="row">
+          <label>Base Interest Rate (annual %)
+            <input id="rate" type="number" min="0" step="0.01" value="9.25">
+          </label>
+          <label>Tenures (years, comma separated)
+            <input id="tenures" type="text" value="5,10,15,20">
+          </label>
+        </div>
+
+        <div class="row small">
+          <label>DTI Threshold (max % of income allowed for all EMIs)
+            <input id="dti" type="number" min="10" max="80" step="1" value="50">
+          </label>
+          <label>Credit Score Multiplier
+            <select id="cs-mult">
+              <option value="1.1">Excellent (≥750) — 1.1</option>
+              <option value="1.0" selected>Good (650-749) — 1.0</option>
+              <option value="0.85">Average (600-649) — 0.85</option>
+              <option value="0.7">Low (&lt;600) — 0.7</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="calc">Calculate</button>
+          <button type="button" id="reset">Reset</button>
+        </div>
+      </form>
+
+      <aside class="card results">
+        <h2>Results</h2>
+        <div id="summary" class="summary muted">Enter details and press <strong>Calculate</strong>.</div>
+
+        <div id="comparison" class="comparison"></div>
+
+        <h3>Selected Plan</h3>
+        <div id="plan" class="plan muted">No plan selected.</div>
+
+        <h3>Amortization</h3>
+        <canvas id="chart" width="600" height="220"></canvas>
+        <div id="amort" class="amort"></div>
+      </aside>
+    </section>
+
+    <footer class="note card muted">
+      <strong>Note</strong>: This tool provides estimates for planning purposes only and is not a loan offer. Always consult your lender for exact figures.
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
